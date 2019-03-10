@@ -1,0 +1,37 @@
+= Basic infrastructure config to create/run enterprise messaging platforms locally
+
+== Maintainer
+
+* Mark Heckler
+* mailto:mark@thehecklers.org[mark@thehecklers.org]
+* https://twitter.com/mkheck[@mkheck on Twitter]
+
+== Purpose
+
+These are some scripts I use to create, configure, & run RabbitMQ & Apache Kafka on my local machine for live-coding sessions.
+
+NOTE: This should be obvious, but these scripts/configurations are *not* intended to be "enterprise grade" and used for production loads! Use them at your own risk. They work great for development and demos, though.
+
+I typically use some or all of these to spin up/down Docker containers in support of my sessions titled *"Drinking from the Stream: How to use messaging platforms for scalability & performance"* and *"Building Reactive Pipelines: How to go from scalable apps to (ridiculously) scalable systems"*. For related code repos (with links to related slides), please see links at the bottom of this README.
+
+Here is the general order of things to set it up like I use it:
+
+. Install Docker on your machine
+. git clone this repo (or fork, then clone, etc.)
+. Start Docker
+. Create the various images & start the associated containers (this must only be done once)
+.. Run the `runRabbitWMgmt.sh` script to create local Rabbit image & run the container
+.. Run the `runKafka.sh` script to create local Zookeeper & Kafka images & run one container of each
+. Run the `stopMessagingPlatforms.sh` script to shut it all down
+. For subsequent startup/shutdown of these containers, simply run `startMessagingPlatforms.sh` & `stopMessagingPlatforms.sh` to start/stop
+
+The start/stop scripts are simply convenience scripts that do a `docker start` / `docker stop` of existing local containers.
+
+NOTE: I use the RabbitMQ image that includes the RabbitMQ management console. This is really useful for monitoring & managing your Rabbit config (exchanges, queues, pushing test messages into, extracting from, purging, etc.).
+
+And of course, you can watch this repo to be notified of updates. Thanks!
+
+== Related repositories
+
+* https://github.com/mkheck/drinking-from-the-stream["Drinking from the Stream: How to use messaging platforms for scalability & performance" repo]
+* https://github.com/mkheck/building-reactive-pipelines["Building Reactive Pipelines: How to go from scalable apps to (ridiculously) scalable systems" repo]
