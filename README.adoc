@@ -17,7 +17,7 @@ I typically use some or all of these to spin up/down Docker containers in suppor
 Here is the general order of things to set it up like I use it:
 
 . Install Docker on your machine
-. git clone this repo (or fork, then clone, etc.)
+. `git clone` this repo (or fork, then clone, etc.)
 . Start Docker
 . Create the various images & start the associated containers (this must only be done once)
 .. Run the `runRabbitWMgmt.sh` script to create local Rabbit image & run the container
